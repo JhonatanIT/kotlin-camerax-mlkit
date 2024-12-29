@@ -1,0 +1,90 @@
+# Built application files
+*.apk
+*.aab
+*.ap_
+
+# Files for the ART/Dalvik VM
+*.dex
+
+# Java class files
+*.class
+
+# Keystore files
+*.jks
+*.keystore
+
+# Generated files
+app/build/
+bin/
+gen/
+out/
+build/
+.navigation/
+captures/
+*.hprof
+*.bin
+*.obj
+*.so
+*.schema
+api-keys.properties
+crashlytics-build.properties
+crashlytics.ndk.mapping
+.buildid
+lint-results*.xml
+lint-results*.html
+outputs/
+*.kotlin_module
+*.zipalignreport
+*.pro
+
+# Android Studio and IntelliJ
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Gradle
+.gradle/
+
+# Version control
+.svn
+.git/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+
+# Build tools and outputs
+build-tools/
+app/build/outputs/release/
+app/build/outputs/debug/
+
+# Google Services
+google-services.json
+
+# Freeline
+freeline.py
+freeline/
+freeline_project_description.json
+
+# fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output
+fastlane/report.html
+
+# Test results and coverage
+test-results/
+coverage/
+
+# Documentation
+docs/
+
+# Third-party libraries
+libs/
