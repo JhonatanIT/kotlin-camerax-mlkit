@@ -34,7 +34,7 @@ class TextRecognitionFactory : AnalyzerFactory {
 
             // Handle text recognition results here
             val resultText = textResults.text
-            println(resultText)
+            previewView.overlay.clear()
 
             for (block in textResults.textBlocks) {
                 val blockText = block.text
@@ -43,7 +43,7 @@ class TextRecognitionFactory : AnalyzerFactory {
 
                 //Draw a block frame
                 val textRecognitionDrawable = TextRecognitionDrawable(blockFrame)
-                previewView.overlay.clear()
+                println(blockText)
                 previewView.overlay.add(textRecognitionDrawable)
 
                 for (line in block.lines) {
