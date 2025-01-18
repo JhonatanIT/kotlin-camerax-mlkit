@@ -8,3 +8,9 @@ import androidx.camera.view.PreviewView
 interface AnalyzerFactory {
     fun createAnalyzerWithPreviewView(context: Context, controller: CameraController, previewView: PreviewView): MlKitAnalyzer
 }
+
+enum class MLKitFeature {
+    BARCODE_SCANNER,
+    TEXT_RECOGNITION,
+    FACE_DETECTION
+}

@@ -10,6 +10,8 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import com.jibanez.kotlincameraxmlkit.factory.AnalyzerFactory
 import com.jibanez.kotlincameraxmlkit.factory.BarcodeScannerFactory
+import com.jibanez.kotlincameraxmlkit.factory.FaceDetectionFactory
+import com.jibanez.kotlincameraxmlkit.factory.MLKitFeature
 import com.jibanez.kotlincameraxmlkit.factory.TextRecognitionFactory
 
 @Composable
@@ -24,6 +26,7 @@ fun CameraPreview(
     val analyzerFactory: AnalyzerFactory = when (mlKitFeature) {
         MLKitFeature.BARCODE_SCANNER -> BarcodeScannerFactory()
         MLKitFeature.TEXT_RECOGNITION -> TextRecognitionFactory()
+        MLKitFeature.FACE_DETECTION -> FaceDetectionFactory()
     }
 
     AndroidView(
@@ -39,10 +42,5 @@ fun CameraPreview(
         },
         modifier = modifier
     )
-}
-
-enum class MLKitFeature {
-    BARCODE_SCANNER,
-    TEXT_RECOGNITION
 }
 

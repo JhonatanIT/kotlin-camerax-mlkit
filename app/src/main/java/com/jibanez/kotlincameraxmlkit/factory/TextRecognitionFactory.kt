@@ -1,6 +1,7 @@
 package com.jibanez.kotlincameraxmlkit.factory
 
 import android.content.Context
+import android.graphics.Color
 import androidx.camera.core.ImageAnalysis
 import androidx.camera.mlkit.vision.MlKitAnalyzer
 import androidx.camera.view.CameraController
@@ -8,7 +9,7 @@ import androidx.camera.view.PreviewView
 import androidx.core.content.ContextCompat
 import com.google.mlkit.vision.text.TextRecognition
 import com.google.mlkit.vision.text.latin.TextRecognizerOptions
-import com.jibanez.kotlincameraxmlkit.textrecognition.TextRecognitionDrawable
+import com.jibanez.kotlincameraxmlkit.drawable.BoundingRectDrawable
 
 class TextRecognitionFactory : AnalyzerFactory {
     override fun createAnalyzerWithPreviewView(context: Context, controller: CameraController, previewView: PreviewView): MlKitAnalyzer {
@@ -28,7 +29,6 @@ class TextRecognitionFactory : AnalyzerFactory {
             val textResults = result?.getValue(recognizer)
             if (textResults == null) {
                 previewView.overlay.clear()
-                previewView.setOnTouchListener { _, _ -> false } // no-op
                 return@MlKitAnalyzer
             }
 
@@ -42,9 +42,9 @@ class TextRecognitionFactory : AnalyzerFactory {
                 val blockFrame = block.boundingBox
 
                 //Draw a block frame
-                val textRecognitionDrawable = TextRecognitionDrawable(blockFrame)
+                val boundingRectDrawable = BoundingRectDrawable(blockFrame, Color.YELLOW)
                 println(blockText)
-                previewView.overlay.add(textRecognitionDrawable)
+                previewView.overlay.add(boundingRectDrawable)
 
                 for (line in block.lines) {
                     val lineText = line.text

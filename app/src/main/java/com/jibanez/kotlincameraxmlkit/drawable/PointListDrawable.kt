@@ -14,36 +14,39 @@
  * limitations under the License.
  */
 
-package com.jibanez.kotlincameraxmlkit.textrecognition
+package com.jibanez.kotlincameraxmlkit.drawable
 
-import android.graphics.*
+import android.graphics.Canvas
+import android.graphics.ColorFilter
+import android.graphics.Paint
+import android.graphics.PixelFormat
+import android.graphics.PointF
 import android.graphics.drawable.Drawable
 
-/**
- * A Drawable that handles displaying the text recognised
- */
-class TextRecognitionDrawable(private val boundingRect: Rect?) : Drawable() {
-    private val boundingRectPaint = Paint().apply {
-        style = Paint.Style.STROKE
-        color = Color.YELLOW
-        strokeWidth = 5F
+class PointListDrawable(private val points: List<PointF>?, private val color: Int) : Drawable() {
+    private val pointListPaint = Paint().apply {
+        style = Paint.Style.FILL_AND_STROKE
         alpha = 200
+        strokeWidth = 8F
     }
 
-    private val contentPadding = 25
-
     override fun draw(canvas: Canvas) {
-        if (boundingRect != null) {
-            canvas.drawRect(boundingRect, boundingRectPaint)
+
+        if (points?.isNotEmpty() == true) {
+
+            pointListPaint.color = color
+            points.forEach { point ->
+                canvas.drawPoint(point.x, point.y, pointListPaint)
+            }
         }
     }
 
     override fun setAlpha(alpha: Int) {
-        boundingRectPaint.alpha = alpha
+        pointListPaint.alpha = alpha
     }
 
     override fun setColorFilter(colorFiter: ColorFilter?) {
-        boundingRectPaint.colorFilter = colorFilter
+        pointListPaint.colorFilter = colorFilter
     }
 
     @Deprecated("Deprecated in Java")

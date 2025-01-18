@@ -49,6 +49,7 @@ import androidx.compose.ui.unit.dp
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.jibanez.kotlincameraxmlkit.factory.MLKitFeature
 import com.jibanez.kotlincameraxmlkit.ui.theme.KotlinCameraXMLKitTheme
 import kotlinx.coroutines.launch
 import java.io.File
@@ -99,7 +100,7 @@ class MainActivity : ComponentActivity() {
                         CameraPreview(
                             controller = controller,
                             context = applicationContext,
-                            mlKitFeature = MLKitFeature.TEXT_RECOGNITION,
+                            mlKitFeature = MLKitFeature.FACE_DETECTION,
                             modifier = Modifier
                                 .fillMaxSize()
                         )
