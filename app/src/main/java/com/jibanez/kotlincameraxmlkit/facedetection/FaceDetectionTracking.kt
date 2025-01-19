@@ -7,31 +7,21 @@ import androidx.camera.mlkit.vision.MlKitAnalyzer
 import androidx.camera.view.CameraController
 import androidx.camera.view.PreviewView
 import androidx.core.content.ContextCompat
-import com.google.mlkit.vision.face.FaceContour
 import com.google.mlkit.vision.face.FaceDetection
 import com.google.mlkit.vision.face.FaceDetectorOptions
-import com.jibanez.kotlincameraxmlkit.drawable.PointsDrawable
 import com.jibanez.kotlincameraxmlkit.drawable.BoundingRectDrawable
+import com.jibanez.kotlincameraxmlkit.drawable.TextDrawable
 import com.jibanez.kotlincameraxmlkit.factory.AnalyzerFactory
 
 class FaceDetectionTracking : AnalyzerFactory {
     override fun createAnalyzerWithPreviewView(context: Context, previewView: PreviewView): MlKitAnalyzer {
 
-        //TODO explore Face Detection tracking
-
-        // High-accuracy landmark detection and face classification
-        val highAccuracyOpts = FaceDetectorOptions.Builder()
+        val trakkingFace = FaceDetectorOptions.Builder()
             .setPerformanceMode(FaceDetectorOptions.PERFORMANCE_MODE_ACCURATE)
-            .setLandmarkMode(FaceDetectorOptions.LANDMARK_MODE_ALL)
-            .setClassificationMode(FaceDetectorOptions.CLASSIFICATION_MODE_ALL)
+            .enableTracking()
             .build()
 
-        // Real-time contour detection
-        val realTimeOpts = FaceDetectorOptions.Builder()
-            .setContourMode(FaceDetectorOptions.CONTOUR_MODE_ALL)
-            .build()
-
-        val detector = FaceDetection.getClient(realTimeOpts)
+        val detector = FaceDetection.getClient(trakkingFace)
 
         val imageAnalysis = ImageAnalysis.Builder()
             .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
@@ -54,42 +44,14 @@ class FaceDetectionTracking : AnalyzerFactory {
 
                 val boundingBox = face.boundingBox
 
-//                val rotY = face.headEulerAngleY // Head is rotated to the right rotY degrees
-//                val rotZ = face.headEulerAngleZ // Head is tilted sideways rotZ degrees
+                // If face tracking was enabled:
+                if (face.trackingId != null) {
+                    val id = face.trackingId
+                    previewView.overlay.add(TextDrawable("Face ID: $id", boundingBox, 0))
+                }
 
-//                // If landmark detection was enabled (mouth, ears, eyes, cheeks, and
-//                // nose available):
-//                val leftEar = face.getLandmark(FaceLandmark.LEFT_EAR)
-//                leftEar?.let {
-//                    val leftEarPos = leftEar.position
-//                }
-
-                // If contour detection was enabled:
-                val leftEyeContour = face.getContour(FaceContour.LEFT_EYE)?.points
-                val rightEyeContour = face.getContour(FaceContour.RIGHT_EYE)?.points
-                val upperLipBottomContour = face.getContour(FaceContour.UPPER_LIP_BOTTOM)?.points
-
-                val leftEyeContourDrawable = PointsDrawable(leftEyeContour, Color.BLUE)
-                val upperLipBottomContourDrawable = PointsDrawable(upperLipBottomContour, Color.RED)
-
-                previewView.overlay.add(leftEyeContourDrawable)
-                previewView.overlay.add(upperLipBottomContourDrawable)
-
-//                // If classification was enabled:
-//                if (face.smilingProbability != null) {
-//                    val smileProb = face.smilingProbability
-//                }
-//                if (face.rightEyeOpenProbability != null) {
-//                    val rightEyeOpenProb = face.rightEyeOpenProbability
-//                }
-//
-//                // If face tracking was enabled:
-//                if (face.trackingId != null) {
-//                    val id = face.trackingId
-//                }
-                //Draw a block frame
-                val boundingRectDrawable = BoundingRectDrawable(boundingBox, Color.CYAN)
-                previewView.overlay.add(boundingRectDrawable)
+                val faceBoundingBoxDrawable = BoundingRectDrawable(boundingBox, Color.YELLOW)
+                previewView.overlay.add(faceBoundingBoxDrawable)
             }
         }
 
