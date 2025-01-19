@@ -14,15 +14,16 @@
  * limitations under the License.
  */
 
-package com.jibanez.kotlincameraxmlkit.qr
+package com.jibanez.kotlincameraxmlkit.drawable
 
 import android.graphics.*
 import android.graphics.drawable.Drawable
+import com.jibanez.kotlincameraxmlkit.barcodescanning.QrCodeViewModel
 
 /**
  * A Drawable that handles displaying a QR Code's data and a bounding box around the QR code.
  */
-class QrCodeDrawable(qrCodeViewModel: QrCodeViewModel) : Drawable() {
+class QrCodeDrawable(private val qrCodeViewModel: QrCodeViewModel) : Drawable() {
     private val boundingRectPaint = Paint().apply {
         style = Paint.Style.STROKE
         color = Color.YELLOW
@@ -42,7 +43,6 @@ class QrCodeDrawable(qrCodeViewModel: QrCodeViewModel) : Drawable() {
         textSize = 36F
     }
 
-    private val qrCodeViewModel = qrCodeViewModel
     private val contentPadding = 25
     private var textWidth = contentTextPaint.measureText(qrCodeViewModel.qrContent).toInt()
 

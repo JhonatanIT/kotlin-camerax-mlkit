@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.jibanez.kotlincameraxmlkit.qr
+package com.jibanez.kotlincameraxmlkit.barcodescanning
 
 import android.content.Intent
 import android.graphics.Rect

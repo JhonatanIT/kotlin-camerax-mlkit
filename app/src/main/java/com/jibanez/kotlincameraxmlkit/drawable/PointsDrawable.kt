@@ -23,11 +23,11 @@ import android.graphics.PixelFormat
 import android.graphics.PointF
 import android.graphics.drawable.Drawable
 
-class PointListDrawable(private val points: List<PointF>?, private val color: Int) : Drawable() {
+class PointsDrawable(private val points: List<PointF>?, private val color: Int) : Drawable() {
     private val pointListPaint = Paint().apply {
         style = Paint.Style.FILL_AND_STROKE
         alpha = 200
-        strokeWidth = 8F
+        strokeWidth = 12F
     }
 
     override fun draw(canvas: Canvas) {
@@ -35,9 +35,10 @@ class PointListDrawable(private val points: List<PointF>?, private val color: In
         if (points?.isNotEmpty() == true) {
 
             pointListPaint.color = color
-            points.forEach { point ->
-                canvas.drawPoint(point.x, point.y, pointListPaint)
-            }
+            canvas.drawPoints(convertPointFListToFloatArray(points), pointListPaint)
+//            points.forEach { point ->
+//                canvas.drawPoint(point.x, point.y, pointListPaint)
+//            }
         }
     }
 
@@ -51,4 +52,8 @@ class PointListDrawable(private val points: List<PointF>?, private val color: In
 
     @Deprecated("Deprecated in Java")
     override fun getOpacity(): Int = PixelFormat.TRANSLUCENT
+
+    private fun convertPointFListToFloatArray(points: List<PointF>): FloatArray {
+        return points.flatMap { listOf(it.x, it.y) }.toFloatArray()
+    }
 }

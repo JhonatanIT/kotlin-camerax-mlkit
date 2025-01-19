@@ -1,4 +1,4 @@
-package com.jibanez.kotlincameraxmlkit.factory
+package com.jibanez.kotlincameraxmlkit.barcodescanning
 
 import android.content.Context
 import androidx.camera.mlkit.vision.MlKitAnalyzer
@@ -7,11 +7,11 @@ import androidx.camera.view.PreviewView
 import androidx.core.content.ContextCompat
 import com.google.mlkit.vision.barcode.BarcodeScannerOptions
 import com.google.mlkit.vision.barcode.BarcodeScanning
-import com.jibanez.kotlincameraxmlkit.qr.QrCodeDrawable
-import com.jibanez.kotlincameraxmlkit.qr.QrCodeViewModel
+import com.jibanez.kotlincameraxmlkit.drawable.QrCodeDrawable
+import com.jibanez.kotlincameraxmlkit.factory.AnalyzerFactory
 
-class BarcodeScannerFactory : AnalyzerFactory {
-    override fun createAnalyzerWithPreviewView(context: Context, controller: CameraController, previewView: PreviewView): MlKitAnalyzer {
+class QrBarcodeScanner : AnalyzerFactory {
+    override fun createAnalyzerWithPreviewView(context: Context, previewView: PreviewView): MlKitAnalyzer {
 
         //TODO Explore Barcode Scanner options (FORMAT_QR_CODE)
         val options = BarcodeScannerOptions.Builder()

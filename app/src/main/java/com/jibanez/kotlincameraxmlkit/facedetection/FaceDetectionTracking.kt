@@ -1,4 +1,4 @@
-package com.jibanez.kotlincameraxmlkit.factory
+package com.jibanez.kotlincameraxmlkit.facedetection
 
 import android.content.Context
 import android.graphics.Color
@@ -10,13 +10,14 @@ import androidx.core.content.ContextCompat
 import com.google.mlkit.vision.face.FaceContour
 import com.google.mlkit.vision.face.FaceDetection
 import com.google.mlkit.vision.face.FaceDetectorOptions
-import com.jibanez.kotlincameraxmlkit.drawable.PointListDrawable
+import com.jibanez.kotlincameraxmlkit.drawable.PointsDrawable
 import com.jibanez.kotlincameraxmlkit.drawable.BoundingRectDrawable
+import com.jibanez.kotlincameraxmlkit.factory.AnalyzerFactory
 
-class FaceDetectionFactory : AnalyzerFactory {
-    override fun createAnalyzerWithPreviewView(context: Context, controller: CameraController, previewView: PreviewView): MlKitAnalyzer {
+class FaceDetectionTracking : AnalyzerFactory {
+    override fun createAnalyzerWithPreviewView(context: Context, previewView: PreviewView): MlKitAnalyzer {
 
-        //TODO explore Face Detection options
+        //TODO explore Face Detection tracking
 
         // High-accuracy landmark detection and face classification
         val highAccuracyOpts = FaceDetectorOptions.Builder()
@@ -65,10 +66,11 @@ class FaceDetectionFactory : AnalyzerFactory {
 
                 // If contour detection was enabled:
                 val leftEyeContour = face.getContour(FaceContour.LEFT_EYE)?.points
+                val rightEyeContour = face.getContour(FaceContour.RIGHT_EYE)?.points
                 val upperLipBottomContour = face.getContour(FaceContour.UPPER_LIP_BOTTOM)?.points
 
-                val leftEyeContourDrawable = PointListDrawable(leftEyeContour, Color.BLUE)
-                val upperLipBottomContourDrawable = PointListDrawable(upperLipBottomContour, Color.RED)
+                val leftEyeContourDrawable = PointsDrawable(leftEyeContour, Color.BLUE)
+                val upperLipBottomContourDrawable = PointsDrawable(upperLipBottomContour, Color.RED)
 
                 previewView.overlay.add(leftEyeContourDrawable)
                 previewView.overlay.add(upperLipBottomContourDrawable)

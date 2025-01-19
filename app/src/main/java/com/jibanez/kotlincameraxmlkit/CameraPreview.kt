@@ -9,10 +9,12 @@ import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import com.jibanez.kotlincameraxmlkit.factory.AnalyzerFactory
-import com.jibanez.kotlincameraxmlkit.factory.BarcodeScannerFactory
-import com.jibanez.kotlincameraxmlkit.factory.FaceDetectionFactory
+import com.jibanez.kotlincameraxmlkit.barcodescanning.QrBarcodeScanner
+import com.jibanez.kotlincameraxmlkit.facedetection.FaceDetectionContour
+import com.jibanez.kotlincameraxmlkit.facedetection.FaceDetectionLandmarkClassification
+import com.jibanez.kotlincameraxmlkit.facedetection.FaceDetectionTracking
 import com.jibanez.kotlincameraxmlkit.factory.MLKitFeature
-import com.jibanez.kotlincameraxmlkit.factory.TextRecognitionFactory
+import com.jibanez.kotlincameraxmlkit.textrecognition.TextRecognition
 
 @Composable
 fun CameraPreview(
@@ -24,15 +26,17 @@ fun CameraPreview(
     val lifecycleOwner = LocalLifecycleOwner.current
 
     val analyzerFactory: AnalyzerFactory = when (mlKitFeature) {
-        MLKitFeature.BARCODE_SCANNER -> BarcodeScannerFactory()
-        MLKitFeature.TEXT_RECOGNITION -> TextRecognitionFactory()
-        MLKitFeature.FACE_DETECTION -> FaceDetectionFactory()
+        MLKitFeature.BARCODE_SCANNER -> QrBarcodeScanner()
+        MLKitFeature.TEXT_RECOGNITION -> TextRecognition()
+        MLKitFeature.FACE_DETECTION_CONTOUR -> FaceDetectionContour()
+        MLKitFeature.FACE_DETECTION_LANDMARK_CLASSIFICATION -> FaceDetectionLandmarkClassification()
+        MLKitFeature.FACE_DETECTION_TRACKING -> FaceDetectionTracking()
     }
 
     AndroidView(
         factory = {
             PreviewView(it).apply {
-                val analyzer = analyzerFactory.createAnalyzerWithPreviewView(context, controller, this)
+                val analyzer = analyzerFactory.createAnalyzerWithPreviewView(context, this)
 
                 //Implementing the ImageAnalysis analyzer
                 controller.setImageAnalysisAnalyzer(ContextCompat.getMainExecutor(context), analyzer)

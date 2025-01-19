@@ -1,4 +1,4 @@
-package com.jibanez.kotlincameraxmlkit.factory
+package com.jibanez.kotlincameraxmlkit.textrecognition
 
 import android.content.Context
 import android.graphics.Color
@@ -10,9 +10,10 @@ import androidx.core.content.ContextCompat
 import com.google.mlkit.vision.text.TextRecognition
 import com.google.mlkit.vision.text.latin.TextRecognizerOptions
 import com.jibanez.kotlincameraxmlkit.drawable.BoundingRectDrawable
+import com.jibanez.kotlincameraxmlkit.factory.AnalyzerFactory
 
-class TextRecognitionFactory : AnalyzerFactory {
-    override fun createAnalyzerWithPreviewView(context: Context, controller: CameraController, previewView: PreviewView): MlKitAnalyzer {
+class TextRecognition : AnalyzerFactory {
+    override fun createAnalyzerWithPreviewView(context: Context, previewView: PreviewView): MlKitAnalyzer {
 
         //TODO explore Text Recognition options
         val recognizer = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS)  // Latin script library
