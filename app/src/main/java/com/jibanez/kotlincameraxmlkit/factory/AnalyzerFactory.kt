@@ -15,5 +15,7 @@ enum class MLKitFeature {
     FACE_DETECTION_LANDMARK_CLASSIFICATION,
     FACE_DETECTION_TRACKING,
     FACE_MESH_DETECTION_BOUNDING_BOX,   //Beta phase: No working properly
-    FACE_MESH_DETECTION                 //Beta phase: No working properly
+    FACE_MESH_DETECTION,                 //Beta phase: No working properly
+    POSE_DETECTION_STREAM,
+    POSE_DETECTION_SINGLE_IMAGE
 }

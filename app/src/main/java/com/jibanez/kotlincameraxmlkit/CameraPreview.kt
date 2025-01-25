@@ -16,6 +16,8 @@ import com.jibanez.kotlincameraxmlkit.facedetection.FaceDetectionTracking
 import com.jibanez.kotlincameraxmlkit.facemeshdetection.FaceMesh
 import com.jibanez.kotlincameraxmlkit.facemeshdetection.FaceMeshBoundingBox
 import com.jibanez.kotlincameraxmlkit.factory.MLKitFeature
+import com.jibanez.kotlincameraxmlkit.posedetection.PoseDetectionSingleImage
+import com.jibanez.kotlincameraxmlkit.posedetection.PoseDetectionStream
 import com.jibanez.kotlincameraxmlkit.textrecognition.TextRecognition
 
 @Composable
@@ -35,6 +37,8 @@ fun CameraPreview(
         MLKitFeature.FACE_DETECTION_TRACKING -> FaceDetectionTracking()
         MLKitFeature.FACE_MESH_DETECTION_BOUNDING_BOX -> FaceMeshBoundingBox()
         MLKitFeature.FACE_MESH_DETECTION -> FaceMesh()
+        MLKitFeature.POSE_DETECTION_STREAM -> PoseDetectionStream()
+        MLKitFeature.POSE_DETECTION_SINGLE_IMAGE -> PoseDetectionSingleImage()
     }
 
     AndroidView(

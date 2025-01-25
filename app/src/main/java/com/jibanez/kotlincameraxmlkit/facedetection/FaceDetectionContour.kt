@@ -12,7 +12,7 @@ import com.google.mlkit.vision.face.FaceDetection
 import com.google.mlkit.vision.face.FaceDetectorOptions
 import com.jibanez.kotlincameraxmlkit.drawable.PointsDrawable
 import com.jibanez.kotlincameraxmlkit.drawable.BoundingRectDrawable
-import com.jibanez.kotlincameraxmlkit.drawable.LinesDrawable
+import com.jibanez.kotlincameraxmlkit.drawable.LinesDrawableListNullable
 import com.jibanez.kotlincameraxmlkit.factory.AnalyzerFactory
 
 class FaceDetectionContour : AnalyzerFactory {
@@ -48,29 +48,29 @@ class FaceDetectionContour : AnalyzerFactory {
 
                 //face contours
                 val faceContoursPoints = PointsDrawable(face.getContour(FaceContour.FACE)?.points, Color.WHITE)
-                val faceContoursLines = LinesDrawable(face.getContour(FaceContour.FACE)?.points, Color.WHITE)
+                val faceContoursLines = LinesDrawableListNullable(face.getContour(FaceContour.FACE)?.points, Color.WHITE)
 
                 //Eye contours
-                val leftEye = LinesDrawable(face.getContour(FaceContour.LEFT_EYE)?.points, Color.BLUE)
-                val leftEyebrowTop = LinesDrawable(face.getContour(FaceContour.LEFT_EYEBROW_TOP)?.points, Color.CYAN)
-                val leftEyebrowBottom = LinesDrawable(face.getContour(FaceContour.LEFT_EYEBROW_BOTTOM)?.points, Color.CYAN)
-                val rightEye = LinesDrawable(face.getContour(FaceContour.RIGHT_EYE)?.points, Color.BLUE)
-                val rightEyebrowTop = LinesDrawable(face.getContour(FaceContour.RIGHT_EYEBROW_TOP)?.points, Color.CYAN)
-                val rightEyebrowBottom = LinesDrawable(face.getContour(FaceContour.RIGHT_EYEBROW_BOTTOM)?.points, Color.CYAN)
+                val leftEye = LinesDrawableListNullable(face.getContour(FaceContour.LEFT_EYE)?.points, Color.BLUE)
+                val leftEyebrowTop = LinesDrawableListNullable(face.getContour(FaceContour.LEFT_EYEBROW_TOP)?.points, Color.CYAN)
+                val leftEyebrowBottom = LinesDrawableListNullable(face.getContour(FaceContour.LEFT_EYEBROW_BOTTOM)?.points, Color.CYAN)
+                val rightEye = LinesDrawableListNullable(face.getContour(FaceContour.RIGHT_EYE)?.points, Color.BLUE)
+                val rightEyebrowTop = LinesDrawableListNullable(face.getContour(FaceContour.RIGHT_EYEBROW_TOP)?.points, Color.CYAN)
+                val rightEyebrowBottom = LinesDrawableListNullable(face.getContour(FaceContour.RIGHT_EYEBROW_BOTTOM)?.points, Color.CYAN)
 
                 //Cheek contours
                 val leftCheek = PointsDrawable(face.getContour(FaceContour.LEFT_CHEEK)?.points, Color.GREEN)
                 val rightCheek = PointsDrawable(face.getContour(FaceContour.RIGHT_CHEEK)?.points, Color.GREEN)
 
                 //Nose contours
-                val noseBridge = LinesDrawable(face.getContour(FaceContour.NOSE_BRIDGE)?.points, Color.MAGENTA)
-                val noseBottom = LinesDrawable(face.getContour(FaceContour.NOSE_BOTTOM)?.points, Color.MAGENTA)
+                val noseBridge = LinesDrawableListNullable(face.getContour(FaceContour.NOSE_BRIDGE)?.points, Color.MAGENTA)
+                val noseBottom = LinesDrawableListNullable(face.getContour(FaceContour.NOSE_BOTTOM)?.points, Color.MAGENTA)
 
                 //Lip contours
-                val upperLipTop = LinesDrawable(face.getContour(FaceContour.UPPER_LIP_TOP)?.points, Color.RED)
-                val upperLipBottom = LinesDrawable(face.getContour(FaceContour.UPPER_LIP_BOTTOM)?.points, Color.RED)
-                val lowerLipTop = LinesDrawable(face.getContour(FaceContour.LOWER_LIP_TOP)?.points, Color.RED)
-                val lowerLipBottom = LinesDrawable(face.getContour(FaceContour.LOWER_LIP_BOTTOM)?.points, Color.RED)
+                val upperLipTop = LinesDrawableListNullable(face.getContour(FaceContour.UPPER_LIP_TOP)?.points, Color.RED)
+                val upperLipBottom = LinesDrawableListNullable(face.getContour(FaceContour.UPPER_LIP_BOTTOM)?.points, Color.RED)
+                val lowerLipTop = LinesDrawableListNullable(face.getContour(FaceContour.LOWER_LIP_TOP)?.points, Color.RED)
+                val lowerLipBottom = LinesDrawableListNullable(face.getContour(FaceContour.LOWER_LIP_BOTTOM)?.points, Color.RED)
 
                 previewView.overlay.add(faceContoursPoints)
                 previewView.overlay.add(faceContoursLines)

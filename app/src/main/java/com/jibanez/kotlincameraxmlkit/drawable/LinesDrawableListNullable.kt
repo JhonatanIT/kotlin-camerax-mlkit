@@ -24,7 +24,7 @@ import android.graphics.PixelFormat
 import android.graphics.PointF
 import android.graphics.drawable.Drawable
 
-class LinesDrawable(private val points: List<PointF>?, private val color: Int) : Drawable() {
+class LinesDrawableListNullable(private val points: List<PointF>?, private val color: Int) : Drawable() {
     private val pointListPaint = Paint().apply {
         style = Paint.Style.STROKE
         alpha = 200
