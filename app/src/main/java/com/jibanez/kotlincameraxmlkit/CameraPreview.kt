@@ -13,6 +13,8 @@ import com.jibanez.kotlincameraxmlkit.barcodescanning.QrBarcodeScanner
 import com.jibanez.kotlincameraxmlkit.facedetection.FaceDetectionContour
 import com.jibanez.kotlincameraxmlkit.facedetection.FaceDetectionLandmarkClassification
 import com.jibanez.kotlincameraxmlkit.facedetection.FaceDetectionTracking
+import com.jibanez.kotlincameraxmlkit.facemeshdetection.FaceMesh
+import com.jibanez.kotlincameraxmlkit.facemeshdetection.FaceMeshBoundingBox
 import com.jibanez.kotlincameraxmlkit.factory.MLKitFeature
 import com.jibanez.kotlincameraxmlkit.textrecognition.TextRecognition
 
@@ -31,6 +33,8 @@ fun CameraPreview(
         MLKitFeature.FACE_DETECTION_CONTOUR -> FaceDetectionContour()
         MLKitFeature.FACE_DETECTION_LANDMARK_CLASSIFICATION -> FaceDetectionLandmarkClassification()
         MLKitFeature.FACE_DETECTION_TRACKING -> FaceDetectionTracking()
+        MLKitFeature.FACE_MESH_DETECTION_BOUNDING_BOX -> FaceMeshBoundingBox()
+        MLKitFeature.FACE_MESH_DETECTION -> FaceMesh()
     }
 
     AndroidView(

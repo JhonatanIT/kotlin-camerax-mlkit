@@ -100,7 +100,7 @@ class MainActivity : ComponentActivity() {
                         CameraPreview(
                             controller = controller,
                             context = applicationContext,
-                            mlKitFeature = MLKitFeature.FACE_DETECTION_TRACKING,
+                            mlKitFeature = MLKitFeature.FACE_DETECTION_CONTOUR,
                             modifier = Modifier
                                 .fillMaxSize()
                         )
