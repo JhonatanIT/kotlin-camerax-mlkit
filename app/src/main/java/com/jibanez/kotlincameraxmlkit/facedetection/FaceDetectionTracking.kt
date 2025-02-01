@@ -29,7 +29,7 @@ class FaceDetectionTracking : AnalyzerFactory {
 
         val analyzer = MlKitAnalyzer(
             listOf(detector),
-            CameraController.COORDINATE_SYSTEM_VIEW_REFERENCED,
+            CameraController.IMAGE_ANALYSIS,
             ContextCompat.getMainExecutor(context)
         ) { result: MlKitAnalyzer.Result?  ->
             val faces = result?.getValue(detector)

@@ -88,4 +88,5 @@ dependencies {
     implementation("com.google.mlkit:face-mesh-detection:16.0.0-beta3")
     implementation("com.google.mlkit:pose-detection:18.0.0-beta5")
     implementation("com.google.mlkit:pose-detection-accurate:18.0.0-beta5")
+    implementation("com.google.mlkit:segmentation-selfie:16.0.0-beta6")
 }

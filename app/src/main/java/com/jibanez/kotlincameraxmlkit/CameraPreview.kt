@@ -18,6 +18,7 @@ import com.jibanez.kotlincameraxmlkit.facemeshdetection.FaceMeshBoundingBox
 import com.jibanez.kotlincameraxmlkit.factory.MLKitFeature
 import com.jibanez.kotlincameraxmlkit.posedetection.PoseDetectionSingleImage
 import com.jibanez.kotlincameraxmlkit.posedetection.PoseDetectionStream
+import com.jibanez.kotlincameraxmlkit.selfiesegmentation.SelfieSegmentationStream
 import com.jibanez.kotlincameraxmlkit.textrecognition.TextRecognition
 
 @Composable
@@ -39,6 +40,7 @@ fun CameraPreview(
         MLKitFeature.FACE_MESH_DETECTION -> FaceMesh()
         MLKitFeature.POSE_DETECTION_STREAM -> PoseDetectionStream()
         MLKitFeature.POSE_DETECTION_SINGLE_IMAGE -> PoseDetectionSingleImage()
+        MLKitFeature.SELF_SEGMENTATION_STREAM -> SelfieSegmentationStream()
     }
 
     AndroidView(

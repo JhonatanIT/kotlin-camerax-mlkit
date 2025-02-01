@@ -29,7 +29,7 @@ class FaceMesh : AnalyzerFactory {
 
         val analyzer = MlKitAnalyzer(
             listOf(faceMeshDetector),
-            CameraController.COORDINATE_SYSTEM_VIEW_REFERENCED,
+            CameraController.IMAGE_ANALYSIS,
             ContextCompat.getMainExecutor(context)
         ) { result: MlKitAnalyzer.Result?  ->
             val faceMeshs = result?.getValue(faceMeshDetector)

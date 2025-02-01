@@ -30,7 +30,7 @@ class PoseDetectionStream : AnalyzerFactory {
 
         val analyzer = MlKitAnalyzer(
             listOf(poseDetector),
-            CameraController.COORDINATE_SYSTEM_VIEW_REFERENCED,
+            CameraController.IMAGE_ANALYSIS,
             ContextCompat.getMainExecutor(context)
         ) { result: MlKitAnalyzer.Result?  ->
             val pose = result?.getValue(poseDetector)

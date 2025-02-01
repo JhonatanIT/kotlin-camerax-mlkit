@@ -24,7 +24,7 @@ class TextRecognition : AnalyzerFactory {
 
         val analyzer = MlKitAnalyzer(
             listOf(recognizer),
-            CameraController.COORDINATE_SYSTEM_VIEW_REFERENCED,
+            CameraController.IMAGE_ANALYSIS,
             ContextCompat.getMainExecutor(context)
         ) { result: MlKitAnalyzer.Result?  ->
             val textResults = result?.getValue(recognizer)

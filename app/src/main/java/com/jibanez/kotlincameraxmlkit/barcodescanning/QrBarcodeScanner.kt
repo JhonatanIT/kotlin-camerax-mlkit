@@ -21,7 +21,7 @@ class QrBarcodeScanner : AnalyzerFactory {
 
         return MlKitAnalyzer(
             listOf(barcodeScanner),
-            CameraController.COORDINATE_SYSTEM_VIEW_REFERENCED,
+            CameraController.IMAGE_ANALYSIS,
             ContextCompat.getMainExecutor(context)
         ) { result: MlKitAnalyzer.Result? ->
             val barcodeResults = result?.getValue(barcodeScanner)
