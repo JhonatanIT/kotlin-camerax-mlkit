@@ -89,4 +89,5 @@ dependencies {
     implementation("com.google.mlkit:pose-detection:18.0.0-beta5")
     implementation("com.google.mlkit:pose-detection-accurate:18.0.0-beta5")
     implementation("com.google.mlkit:segmentation-selfie:16.0.0-beta6")
+    implementation("com.google.mlkit:image-labeling:17.0.9")
 }

@@ -100,7 +100,7 @@ class MainActivity : ComponentActivity() {
                         CameraPreview(
                             controller = controller,
                             context = applicationContext,
-                            mlKitFeature = MLKitFeature.POSE_DETECTION_SINGLE_IMAGE,
+                            mlKitFeature = MLKitFeature.IMAGE_LABELING_DEFAULT,
                             modifier = Modifier
                                 .fillMaxSize()
                         )
