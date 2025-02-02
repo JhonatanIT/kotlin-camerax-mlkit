@@ -16,6 +16,7 @@ import com.jibanez.kotlincameraxmlkit.facedetection.FaceDetectionTracking
 import com.jibanez.kotlincameraxmlkit.facemeshdetection.FaceMesh
 import com.jibanez.kotlincameraxmlkit.facemeshdetection.FaceMeshBoundingBox
 import com.jibanez.kotlincameraxmlkit.factory.MLKitFeature
+import com.jibanez.kotlincameraxmlkit.imagelabeling.ImageLabelingCustomModel
 import com.jibanez.kotlincameraxmlkit.imagelabeling.ImageLabelingDefault
 import com.jibanez.kotlincameraxmlkit.posedetection.PoseDetectionSingleImage
 import com.jibanez.kotlincameraxmlkit.posedetection.PoseDetectionStream
@@ -43,6 +44,7 @@ fun CameraPreview(
         MLKitFeature.POSE_DETECTION_SINGLE_IMAGE -> PoseDetectionSingleImage()
         MLKitFeature.SELF_SEGMENTATION_STREAM -> SelfieSegmentationStream()
         MLKitFeature.IMAGE_LABELING_DEFAULT -> ImageLabelingDefault()
+        MLKitFeature.IMAGE_LABELING_CUSTOM_MODEL -> ImageLabelingCustomModel()
     }
 
     AndroidView(

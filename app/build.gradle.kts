@@ -48,6 +48,12 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+    androidResources {
+        // Use noCompress for files that are already compressed or have a specific format that doesn't benefit from further compression.
+        // We don't want to compress these files because they are already optimized and compressed.
+        // Compressing them further can increase file size or slow down loading.
+        noCompress.addAll(listOf("tflite", "lite")) // Add more extensions as needed
+    }
 }
 
 dependencies {
@@ -90,4 +96,6 @@ dependencies {
     implementation("com.google.mlkit:pose-detection-accurate:18.0.0-beta5")
     implementation("com.google.mlkit:segmentation-selfie:16.0.0-beta6")
     implementation("com.google.mlkit:image-labeling:17.0.9")
+    implementation("com.google.mlkit:image-labeling-custom:17.0.3")
+
 }

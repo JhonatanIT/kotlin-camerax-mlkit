@@ -20,4 +20,5 @@ enum class MLKitFeature {
     POSE_DETECTION_SINGLE_IMAGE,
     SELF_SEGMENTATION_STREAM,           //Beta phase: No working properly
     IMAGE_LABELING_DEFAULT,
+    IMAGE_LABELING_CUSTOM_MODEL,
 }

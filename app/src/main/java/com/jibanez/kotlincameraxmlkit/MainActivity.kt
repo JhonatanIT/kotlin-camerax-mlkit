@@ -100,7 +100,7 @@ class MainActivity : ComponentActivity() {
                         CameraPreview(
                             controller = controller,
                             context = applicationContext,
-                            mlKitFeature = MLKitFeature.IMAGE_LABELING_DEFAULT,
+                            mlKitFeature = MLKitFeature.IMAGE_LABELING_CUSTOM_MODEL,
                             modifier = Modifier
                                 .fillMaxSize()
                         )
