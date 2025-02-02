@@ -30,7 +30,7 @@ class PoseDetectionSingleImage : AnalyzerFactory {
 
         val analyzer = MlKitAnalyzer(
             listOf(poseDetector),
-            CameraController.IMAGE_ANALYSIS,
+            CameraController.IMAGE_CAPTURE,
             ContextCompat.getMainExecutor(context)
         ) { result: MlKitAnalyzer.Result?  ->
             val pose = result?.getValue(poseDetector)

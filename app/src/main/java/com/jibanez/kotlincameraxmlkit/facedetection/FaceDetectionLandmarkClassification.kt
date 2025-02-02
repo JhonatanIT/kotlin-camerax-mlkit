@@ -34,7 +34,7 @@ class FaceDetectionLandmarkClassification : AnalyzerFactory {
 
         val analyzer = MlKitAnalyzer(
             listOf(detector),
-            CameraController.IMAGE_ANALYSIS,
+            CameraController.IMAGE_CAPTURE,
             ContextCompat.getMainExecutor(context)
         ) { result: MlKitAnalyzer.Result?  ->
             val faces = result?.getValue(detector)

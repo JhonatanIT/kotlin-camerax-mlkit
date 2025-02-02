@@ -97,5 +97,6 @@ dependencies {
     implementation("com.google.mlkit:segmentation-selfie:16.0.0-beta6")
     implementation("com.google.mlkit:image-labeling:17.0.9")
     implementation("com.google.mlkit:image-labeling-custom:17.0.3")
+    implementation("com.google.mlkit:object-detection:17.0.2")
 
 }

@@ -27,7 +27,7 @@ class FaceMeshBoundingBox : AnalyzerFactory {
 
         val analyzer = MlKitAnalyzer(
             listOf(boundingBoxDetector),
-            CameraController.IMAGE_ANALYSIS,
+            CameraController.IMAGE_CAPTURE,
             ContextCompat.getMainExecutor(context)
         ) { result: MlKitAnalyzer.Result?  ->
             val faceMeshs = result?.getValue(boundingBoxDetector)

@@ -39,7 +39,7 @@ class ImageLabelingCustomModel : AnalyzerFactory {
 
         val analyzer = MlKitAnalyzer(
             listOf(labelerDetector),
-            CameraController.IMAGE_ANALYSIS,
+            CameraController.IMAGE_CAPTURE,
             ContextCompat.getMainExecutor(context)
         ) { result: MlKitAnalyzer.Result?  ->
             val labels = result?.getValue(labelerDetector)
