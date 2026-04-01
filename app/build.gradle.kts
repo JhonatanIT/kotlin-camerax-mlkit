@@ -1,17 +1,16 @@
 plugins {
     id("com.android.application")
-    id("org.jetbrains.kotlin.android")
     id("org.jetbrains.kotlin.plugin.compose")
 }
 
 android {
     namespace = "com.jibanez.kotlincameraxmlkit"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.jibanez.kotlincameraxmlkit"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0"
 
@@ -34,14 +33,8 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
     buildFeatures {
         compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.15"
     }
     packaging {
         resources {
@@ -49,15 +42,11 @@ android {
         }
     }
     androidResources {
-        // Use noCompress for files that are already compressed or have a specific format that doesn't benefit from further compression.
-        // We don't want to compress these files because they are already optimized and compressed.
-        // Compressing them further can increase file size or slow down loading.
-        noCompress.addAll(listOf("tflite", "lite")) // Add more extensions as needed
+        noCompress.addAll(listOf("tflite", "lite"))
     }
 }
 
 dependencies {
-
     implementation("androidx.core:core-ktx:1.18.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.10.0")
 
@@ -89,7 +78,6 @@ dependencies {
     implementation("androidx.camera:camera-extensions:$cameraxVersion")
     implementation("androidx.camera:camera-mlkit-vision:${cameraxVersion}")
 
-//    MlKit
     implementation("com.google.mlkit:barcode-scanning:17.3.0")
     implementation("com.google.mlkit:text-recognition:16.0.1")
     implementation("com.google.mlkit:face-detection:16.1.7")
@@ -100,5 +88,4 @@ dependencies {
     implementation("com.google.mlkit:image-labeling:17.0.9")
     implementation("com.google.mlkit:image-labeling-custom:17.0.3")
     implementation("com.google.mlkit:object-detection:17.0.2")
-
 }
